@@ -6,4 +6,6 @@
 <!--![Sample GIF](assets/sample.gif)-->
 
 
-<img src="assets/sample.gif" alt="Sample GIF" width="300" height="800">
+<div align="center">
+<img src="assets/sample.gif" alt="Sample GIF" width="400" height="600">
+</div>
