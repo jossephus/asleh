@@ -3,4 +3,6 @@
 <h3 align="center"><em>Android App for the rust library fend for mathematical calculations</em></h3>
 <p align="center"></p>
 
+![Sample GIF](assets/sample.gif)
+
 
