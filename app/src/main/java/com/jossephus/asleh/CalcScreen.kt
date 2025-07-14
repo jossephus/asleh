@@ -35,9 +35,9 @@ fun CalcScreen() {
     val coroutineScope = rememberCoroutineScope()
     val focusRequester = remember { FocusRequester() }
 
-//    LaunchedEffect(Unit) {
-//        focusRequester.requestFocus()
-//    }
+    LaunchedEffect(Unit) {
+        focusRequester.requestFocus()
+    }
 
     Scaffold(
         topBar = {
@@ -50,7 +50,7 @@ fun CalcScreen() {
                         "clear",
                         color = Color.White,
                         modifier = Modifier.clickable {
-//                            entries.clear()
+                            entries.clear()
                         }
                     )
                 },
@@ -85,7 +85,7 @@ fun CalcScreen() {
                                 val timestampMillis: Long = now.time
                                 val timezoneOffsetSeconds: Int = java.util.TimeZone.getDefault().rawOffset / 1000
 
-                                val calc = uniffi.asleh.evaluateFend(input, 10.toUInt(), timestampMillis.toUInt(), timezoneOffsetSeconds.toUInt() )
+                                val calc = uniffi.asleh.evaluateFend(input, 10000.toUInt(), timestampMillis.toUInt(), timezoneOffsetSeconds.toUInt() )
                                 entries.add(Entry(input = input, result = calc))
                                 input = ""
 
