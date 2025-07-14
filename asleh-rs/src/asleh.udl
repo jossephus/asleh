@@ -1,0 +1,4 @@
+
+namespace asleh {
+  string evaluate_fend([ByRef] string input, u32 timeout, u32 time, u32 timezone_offset);
+};
