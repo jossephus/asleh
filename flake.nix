@@ -35,7 +35,7 @@
             build-tools-35-0-0
             cmdline-tools-latest
             platform-tools
-            platforms-android-29
+            platforms-android-36
             ndk-29-0-13113456
           ]);
         };
