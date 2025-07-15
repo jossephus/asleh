@@ -1,0 +1,75 @@
+on:
+  push:
+    tags:
+      - "*"
+
+name: Release
+
+jobs:
+  release:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - run: nix develop -L --verbose
+
+      - name: build-asleh
+        run: |
+          nix develop --command bash <<EOF
+          set -e
+          cd asleh-rs
+          cargo build --lib \
+            --target x86_64-linux-android \
+            --target i686-linux-android \
+            --target armv7-linux-androideabi \
+            --target aarch64-linux-android
+          EOF
+
+      - name: rename-and-move
+        run: <<EOF 
+            cd asleh-rs
+            mkdir -p jniLibs/arm64-v8a/ && \
+            cp target/aarch64-linux-android/debug/libasleh.so jniLibs/arm64-v8a/libuniffi_asleh.so && \
+            mkdir -p jniLibs/armeabi-v7a/ && \
+            cp target/armv7-linux-androideabi/debug/libasleh.so jniLibs/armeabi-v7a/libuniffi_asleh.so && \
+            mkdir -p jniLibs/x86/ && \
+            cp target/i686-linux-android/debug/libasleh.so jniLibs/x86/libuniffi_asleh.so && \
+            mkdir -p jniLibs/x86_64/ && \
+            cp target/x86_64-linux-android/debug/libasleh.so jniLibs/x86_64/libuniffi_asleh.so
+            mv jniLibs ../app/src/main/
+        EOF
+
+      - name: generate-kotlin 
+        run: |
+          nix develop --command bash <<EOF
+          set -e
+            cd asleh-rs
+            cargo  run  --features=uniffi/cli \
+                        --bin uniffi-bindgen \
+                        --language kotlin
+            mv src/uniffi ../app/src/main/java/
+          EOF
+
+      - name: Build Release
+        run: |
+          nix develop --command bash <<EOF 
+            set -e
+            ./gradlew assembleRelease
+          EOF 
+
+
+      - name: Upload Releases
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ./app/build/outputs/
+
