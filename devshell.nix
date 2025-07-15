@@ -32,6 +32,10 @@ devshell.mkShell {
     android-sdk
     gradle
     jdk11
+    (rust-bin.stable.latest.default.override {
+      extensions = [ "rust-src" ];
+      targets = [ "arm-unknown-linux-gnueabihf" "aarch64-linux-android" "armv7-linux-androideabi" "x86_64-linux-android" "i686-linux-android" ];
+    })
   ];
 }
 

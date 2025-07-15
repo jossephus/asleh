@@ -6,12 +6,13 @@
     devshell.url = "github:numtide/devshell";
     flake-utils.url = "github:numtide/flake-utils";
     android.url = "github:tadfisher/android-nixpkgs";
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
-  outputs = { self, nixpkgs, devshell, flake-utils, android}:
+  outputs = { self, nixpkgs, devshell, flake-utils, android, rust-overlay }:
     {
       overlay = final: prev: {
-        inherit (self.packages.${final.system}) android-sdk zig;
+        inherit (self.packages.${final.system}) android-sdk;
       };
     }
     //
@@ -23,6 +24,7 @@
           overlays = [
             devshell.overlays.default
             self.overlay
+            (import rust-overlay)
           ];
         };
       in
