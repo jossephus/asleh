@@ -1,7 +1,7 @@
 on:
   push:
-    tags:
-      - "*"
+    #tags:
+      #- "*"
 
 name: Release
 
@@ -59,6 +59,7 @@ jobs:
             cd asleh-rs
             cargo run --features=uniffi/cli \
                       --bin uniffi-bindgen \
+                      generate src/asleh.udl \
                       --language kotlin
             mv src/uniffi ../app/src/main/java/
           '
