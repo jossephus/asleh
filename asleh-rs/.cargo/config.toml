@@ -1,13 +1,13 @@
 
 [target.aarch64-linux-android]
-linker = "/nix/store/131pf48c8yv0r9f0jwbzbj4fnj4fdh7z-android-sdk-env/share/android-sdk/ndk/29.0.13113456/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang"
+linker = "/nix/store/5pjh6gn2hhm1mz5i58i35b1iyf0m50mm-android-sdk-env/share/android-sdk/ndk/29.0.13113456/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang"
 
 [target.armv7-linux-androideabi]
-linker = "/nix/store/131pf48c8yv0r9f0jwbzbj4fnj4fdh7z-android-sdk-env/share/android-sdk/ndk/29.0.13113456/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi24-clang"
+linker = "/nix/store/5pjh6gn2hhm1mz5i58i35b1iyf0m50mm-android-sdk-env/share/android-sdk/ndk/29.0.13113456/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi24-clang"
 
 [target.x86_64-linux-android]
-linker="/nix/store/131pf48c8yv0r9f0jwbzbj4fnj4fdh7z-android-sdk-env/share/android-sdk/ndk/29.0.13113456/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android24-clang"
+linker="/nix/store/5pjh6gn2hhm1mz5i58i35b1iyf0m50mm-android-sdk-env/share/android-sdk/ndk/29.0.13113456/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android24-clang"
 
 [target.i686-linux-android]
-linker="/nix/store/131pf48c8yv0r9f0jwbzbj4fnj4fdh7z-android-sdk-env/share/android-sdk/ndk/29.0.13113456/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android24-clang"
+linker="/nix/store/5pjh6gn2hhm1mz5i58i35b1iyf0m50mm-android-sdk-env/share/android-sdk/ndk/29.0.13113456/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android24-clang"
 

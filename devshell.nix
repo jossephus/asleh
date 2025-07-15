@@ -25,13 +25,13 @@ devshell.mkShell {
     }
     {
       name = "JAVA_HOME";
-      value = jdk11.home;
+      value = jdk17.home;
     }
   ];
   packages = [
     android-sdk
     gradle
-    jdk11
+    jdk17
     (rust-bin.stable.latest.default.override {
       extensions = [ "rust-src" ];
       targets = [ "arm-unknown-linux-gnueabihf" "aarch64-linux-android" "armv7-linux-androideabi" "x86_64-linux-android" "i686-linux-android" ];
