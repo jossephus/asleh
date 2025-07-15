@@ -2,7 +2,6 @@
 .gradle
 .idea/
 .kotlin/
-/local.properties
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
@@ -14,7 +13,6 @@
 /captures
 .externalNativeBuild
 .cxx
-local.properties
 
 jniLibs/
 uniffi/

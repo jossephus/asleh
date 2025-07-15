@@ -69,6 +69,7 @@ jobs:
           nix develop -c bash -c '
             set -e
             chmod +x ./gradlew
+            chmod -w local.properties
             ./gradlew assembleRelease
           '
 
