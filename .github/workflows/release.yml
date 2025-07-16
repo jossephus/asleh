@@ -65,7 +65,7 @@ jobs:
           '
       - name: generate release key
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > key.jks
+          cd app/ && echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > key.jks
 
       - name: build android release
         env: 
