@@ -63,8 +63,15 @@ jobs:
                       --language kotlin
             mv src/uniffi ../app/src/main/java/
           '
+      - name: generate release key
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > key.jks
 
       - name: build android release
+        env: 
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
           nix develop -c bash -c '
             set -e
