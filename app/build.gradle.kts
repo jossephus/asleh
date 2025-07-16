@@ -21,16 +21,16 @@ android {
     signingConfigs {
         create("release") {
             storeFile = file("key.jks")
-            storePassword = System.getenv("KEYSTORE_PASSWORD")
-            keyAlias = System.getenv("KEY_ALIAS")
-            keyPassword = System.getenv("KEY_PASSWORD")
+            storePassword = "awdsefrr"
+            keyAlias = "key0"
+            keyPassword = "awdsefrr"
         }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = true
-            isShrinkResources = false
+            isShrinkResources = true
             signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

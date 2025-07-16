@@ -19,3 +19,14 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep the UniFFI scaffolding code
+# (Replace 'uniffi.asleh' with your actual package name if different)
+-keep class uniffi.asleh.** { *; }
+
+# Keep the JNA (Java Native Access) library, which UniFFI depends on
+-keep class com.sun.jna.** { *; }
+-keep public interface com.sun.jna.** { *; }
+
+# Suppress warnings about the missing java.awt package, which is not on Android
+-dontwarn java.awt.**
