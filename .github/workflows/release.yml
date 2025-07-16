@@ -39,16 +39,16 @@ jobs:
         run: |
           cd asleh-rs
           mkdir -p jniLibs/arm64-v8a/
-          cp target/aarch64-linux-android/debug/libasleh.so jniLibs/arm64-v8a/libuniffi_asleh.so
+          cp target/aarch64-linux-android/release/libasleh.so jniLibs/arm64-v8a/libuniffi_asleh.so
 
           mkdir -p jniLibs/armeabi-v7a/
-          cp target/armv7-linux-androideabi/debug/libasleh.so jniLibs/armeabi-v7a/libuniffi_asleh.so
+          cp target/armv7-linux-androideabi/release/libasleh.so jniLibs/armeabi-v7a/libuniffi_asleh.so
 
           mkdir -p jniLibs/x86/
-          cp target/i686-linux-android/debug/libasleh.so jniLibs/x86/libuniffi_asleh.so
+          cp target/i686-linux-android/release/libasleh.so jniLibs/x86/libuniffi_asleh.so
 
           mkdir -p jniLibs/x86_64/
-          cp target/x86_64-linux-android/debug/libasleh.so jniLibs/x86_64/libuniffi_asleh.so
+          cp target/x86_64-linux-android/release/libasleh.so jniLibs/x86_64/libuniffi_asleh.so
 
           mv jniLibs ../app/src/main/
 
