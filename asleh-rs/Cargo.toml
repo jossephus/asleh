@@ -21,3 +21,10 @@ uniffi = { version = "0.29.3", features = [ "build" ] }
 [[bin]]
 name = "uniffi-bindgen"
 path = "uniffi-bindgen.rs"
+
+
+[profile.release]
+lto = true
+codegen-units = 1  # Reduces parallelism but enables better optimization
+opt-level = "z"    # Optimize for size
+strip = "symbols"  # Strip debug symbols (Rust 1.60+)
