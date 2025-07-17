@@ -28,7 +28,7 @@ jobs:
           nix develop -c bash -c '
             set -e
             cd asleh-rs
-            cargo build --release --lib \
+            cargo build --release --no-default-features --lib \
               --target x86_64-linux-android \
               --target i686-linux-android \
               --target armv7-linux-androideabi \

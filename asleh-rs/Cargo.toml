@@ -28,3 +28,5 @@ lto = true
 codegen-units = 1  # Reduces parallelism but enables better optimization
 opt-level = "z"    # Optimize for size
 strip = "symbols"  # Strip debug symbols (Rust 1.60+)
+panic = "abort"
+
