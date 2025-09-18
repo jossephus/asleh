@@ -15,13 +15,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v23
-        with:
-          nix_path: nixpkgs=channel:nixos-unstable
-
-      # Add Cache
+      - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: nix shell
