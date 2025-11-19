@@ -8,8 +8,9 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
-.DS_Store
+.DS_Storegt
 /build
+/composeApp/build
 /captures
 .externalNativeBuild
 .cxx
@@ -18,3 +19,13 @@ jniLibs/
 uniffi/
 /app/key.jks
 /app/release
+
+# Swift build artifacts
+asleh-rs/src/swift/
+asleh-rs/build/
+iosApp/Shared/asleh.swift
+iosApp/Shared/aslehFFI.h
+iosApp/Shared/module.modulemap
+iosApp/Shared/*.swiftmodule
+iosApp/Shared/*.dylib
+iosApp/Shared/libasleh.a

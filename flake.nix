@@ -15,8 +15,9 @@
         inherit (self.packages.${final.system}) android-sdk;
       };
     }
+    # 'devShells.aarch64-darwin.default', 'devShell.aarch64-darwin', 'packages.aarch64-darwin.default' or 'defaultPackage.aarch64-darwin'
     //
-    flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
+    flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ] (system:
       let
         pkgs = import nixpkgs {
           inherit system;
