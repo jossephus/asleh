@@ -34,7 +34,16 @@ devshell.mkShell {
     jdk17
     (rust-bin.stable.latest.default.override {
       extensions = [ "rust-src" ];
-      targets = [ "arm-unknown-linux-gnueabihf" "aarch64-linux-android" "armv7-linux-androideabi" "x86_64-linux-android" "i686-linux-android" ];
+      targets = [ 
+        "arm-unknown-linux-gnueabihf" 
+        "aarch64-linux-android" 
+        "armv7-linux-androideabi" 
+        "x86_64-linux-android" 
+        "i686-linux-android" 
+        "aarch64-apple-ios"
+        "x86_64-apple-ios"
+        "aarch64-apple-ios-sim"
+      ];
     })
   ];
 }

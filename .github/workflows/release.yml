@@ -30,7 +30,10 @@ jobs:
               --target x86_64-linux-android \
               --target i686-linux-android \
               --target armv7-linux-androideabi \
-              --target aarch64-linux-android
+              --target aarch64-linux-android \
+              --target aarch64-apple-ios \
+              --target x86_64-apple-ios \
+              --target aarch64-apple-ios-sim
           '
 
       - name: build jniLibs
@@ -61,6 +64,46 @@ jobs:
                       --language kotlin
             mv src/uniffi ../app/src/main/java/
           '
+
+      - name: generate swift bindings and build module
+        run: |
+          nix develop -c bash -c '
+            set -e
+            cd asleh-rs
+            
+            # Generate Swift bindings
+            mkdir -p src/swift
+            cargo run --features=uniffi/cli \
+                      --bin uniffi-bindgen \
+                      generate src/asleh.udl \
+                      --language swift \
+                      --out-dir src/swift
+            
+            mv src/swift/aslehFFI.modulemap src/swift/module.modulemap
+            
+            SDK_PATH=$(xcrun --show-sdk-path --sdk iphoneos)
+            mkdir -p build/swift/aarch64-apple-ios
+            swiftc \
+                -module-name asleh \
+                -emit-library -o build/swift/aarch64-apple-ios/libasleh.dylib \
+                -emit-module -emit-module-path build/swift/aarch64-apple-ios \
+                -parse-as-library \
+                -target arm64-apple-ios11.0 \
+                -sdk $SDK_PATH \
+                -L target/aarch64-apple-ios/release \
+                -lasleh \
+                -Xcc -fmodule-map-file=src/swift/module.modulemap \
+                src/swift/asleh.swift
+            
+
+            mkdir -p ../iosApp/Shared
+            cp src/swift/asleh.swift ../iosApp/Shared/
+            cp src/swift/aslehFFI.h ../iosApp/Shared/
+            cp src/swift/module.modulemap ../iosApp/Shared/
+            cp -r build/swift/aarch64-apple-ios/* ../iosApp/Shared/
+            cp target/aarch64-apple-ios/release/libasleh.a ../iosApp/Shared/
+          '
+
       - name: generate release key
         run: |
           cd app/ && echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > key.jks
